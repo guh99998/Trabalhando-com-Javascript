@@ -5,17 +5,29 @@ class Cliente {
 
 class ContaCorrente {
     agencia;
-    saldo;
+    _saldo;
 
     sacar(valor) 
     {
-        if (this.saldo >= valor) 
+        if (this._saldo >= valor) 
         {
-            this.saldo -= valor;
-            console.log("Novo saldo:", this.saldo);
+            this._saldo -= valor;
+            console.log("Novo saldo:", this._saldo);
         } else 
         {
             console.log("Saldo insuficiente para sacar");
+        }
+    }
+
+    depositar(valor)
+    {
+        if (valor > 0)
+        {
+            this._saldo += valor;
+            console.log("Novo saldo:", this._saldo);
+        } else
+        {
+            console.log("Não é possível depositar um valor menor que 0");
         }
     }
 }
@@ -32,12 +44,10 @@ cliente2.cpf = 150354897510;
 
 const contaCorrenteGustavo = new ContaCorrente();
 contaCorrenteGustavo.agencia = 1001;
-contaCorrenteGustavo.saldo = 0;
-console.log(contaCorrenteGustavo.saldo);
-contaCorrenteGustavo.saldo = 100;
-console.log(contaCorrenteGustavo.saldo);
+contaCorrenteGustavo._saldo = 0;
 
-contaCorrenteGustavo.sacar(100);
+contaCorrenteGustavo.depositar(2000);
+
 
 console.log(cliente1);
 console.log(cliente2);
